@@ -22,13 +22,15 @@ public class Main {
         return datoIngresado;
     }
 
-    public static void main(String[] args) {
+    public static void main(String[] args) throws Exception {
 
         // Se crea el nuevo grafo
-        GrafoTDA grf = new GrafoTDA(13);
+        GrafoMA grf = new GrafoMA(13);
+        // Inicializamos el grafo
+        grf.InicializarGrafo();
 
         // Creamos los vértices del grafo
-        for (int i = 0; i < GrafoTDA.numVertices; i++) {
+        for (int i = 0; i < GrafoMA.numVertices; i++) {
             grf.AgregarVertice(i);
         }
 
@@ -69,10 +71,12 @@ public class Main {
         System.out.println("Caminos sin pesos a todos los vértices: \n");
         grf.caminoMinimoSinPeso(grf.retornarMatrizAdyacencia(), origen - 1);
 
+        // Se genera el árbol utilizando el algoritmo de Kruskal almacenado dentro de la clase GrafoTDA
+        GrafoTDA arbolMinimo = GrafoMA.kruskal(grf);
+        arbolMinimo.imprimirGrafo();
+
         // Cálculo del camino mínimo usando el Algoritmo de Dijkstra
-        System.out.println("Calculo de camino minimo usando el algoritmo de dijkstra");
-        int inicio = ingresarValor("Ingrese nodo origen (1-2-3-4-5-6-7-8-9-10-11-12-13): ");
-        int fin = ingresarValor("Ingrese nodo destino (1-2-3-4-5-6-7-8-9-10-11-12-13):");
-        // grf.dijkstra(inicio - 1, fin - 1);
+        System.out.println("Calculo de camino minimo usando el algoritmo de Dijkstra: \n");
+        GrafoMA.dijkstra(grf, 0);
     }
 }
