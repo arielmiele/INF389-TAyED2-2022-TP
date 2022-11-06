@@ -129,7 +129,7 @@ public class Main {
         return object;
     }
 
-    public static void ejecutar(Class claseHash){
+    public static void ejecutar(Class claseHash) {
         TablaHash tabla;
         Constructor<TablaHash> constructor = null;
         constructor = claseHash.getConstructor();
