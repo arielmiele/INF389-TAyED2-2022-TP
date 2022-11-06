@@ -11,13 +11,13 @@ package estructuraDatos;
 public abstract class ExploracionTablaHash implements TablaHash {
 
     // Declaración de variables y constantes
-    private static final int TAMANIO_TABLA_POR_DEFECTO = 11;
+    private static final int TAMANIO_TABLA_POR_DEFECTO = 10;
 
     // Vector de elementos
     protected EntradaHash[] vector;
 
     // Numero de celdas ocupadas
-    private int tamanioActual;
+    //private int tamanioActual;
 
     // Declaración de métodos constructores
 
@@ -28,7 +28,7 @@ public abstract class ExploracionTablaHash implements TablaHash {
 
     // Vacía la tabla
     public final void vaciar() {
-        this.tamanioActual = 0;
+        //this.tamanioActual = 0;
         for (int i = 0; i < vector.length; i++)
             vector[i] = null;
     }
@@ -43,7 +43,7 @@ public abstract class ExploracionTablaHash implements TablaHash {
         vector[posicionActual] = new EntradaHash(x, true);
     }
 
-    public final void eliminar(Hashable x) {
+    public void eliminar(Hashable x) {
         int posicionActual = buscarPos(x);
         if (vector[posicionActual] == null) {
             System.out.println("No existe el valor en la tabla hash.\n");
@@ -52,12 +52,14 @@ public abstract class ExploracionTablaHash implements TablaHash {
         }
     }
 
-    public final Hashable buscar(Hashable x) {
+    public EntradaHash buscar(Hashable x) {
         int posicionActual = buscarPos(x);
         if (vector[posicionActual] == null) {
             System.out.println("No existe el valor en la tabla hash.\n");
         }
-        return vector[posicionActual].getElemento();
+        System.out.println(
+                "Se encontro el valor en el indice: " + Integer.parseInt(String.valueOf(posicionActual)) + ".\n");
+        return this.vector[posicionActual];
     }
 
     protected abstract int buscarPos(Hashable x);
@@ -71,11 +73,11 @@ public abstract class ExploracionTablaHash implements TablaHash {
         return false;
     }
 
-    public void imprimirTablaHash(){
+    public void imprimirTablaHash() {
         System.out.println(" * POSICION * VALOR *");
     }
 
-    public int getTamanioTablaDefault(){
+    public int getTamanioTablaDefault() {
         return ExploracionTablaHash.TAMANIO_TABLA_POR_DEFECTO;
     }
 }

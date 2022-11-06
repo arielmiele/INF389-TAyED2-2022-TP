@@ -12,6 +12,8 @@ public class EntradaHash {
 
     private Hashable elemento;
     private boolean estaActivo;
+    private EntradaHash ant = null;
+    private EntradaHash sig = null;
 
     public EntradaHash(Hashable x, boolean b) {
         this.elemento = x;
@@ -31,4 +33,27 @@ public class EntradaHash {
         this.estaActivo = true;
     }
 
+    public EntradaHash getSig() {
+        return sig;
+    }
+
+    public void setSig(EntradaHash sig) {
+        this.sig = sig;
+    }
+
+    public EntradaHash getAnt() {
+        return ant;
+    }
+
+    public void setAnt(EntradaHash ant) {
+        this.ant = ant;
+    }
+
+    public String aCadena() {
+        return this.elemento.toString();
+    }
+
+    public boolean estaActivo() {
+        return this.estaActivo;
+    }
 }

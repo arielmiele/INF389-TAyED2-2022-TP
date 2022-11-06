@@ -16,9 +16,9 @@ public class TablaExploracionLineal extends ExploracionTablaHash {
             return 0;
         }
 
-        int colision = 0;
+        //int colision = 0;
         int posicionActual = x.hash(vector.length);
-        int posicionInicial = posicionActual;
+        //int posicionInicial = posicionActual;
 
         while (vector[posicionActual] != null && !vector[posicionActual].getElemento().equals(x)) {
             posicionActual += 1;
